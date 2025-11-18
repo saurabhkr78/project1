@@ -359,10 +359,19 @@ This opens a GUI at `http://localhost:5555` where you can view and edit contacts
 ### Deployment Platforms
 
 **Render.com:**
-1. Connect your GitHub repository
-2. Set environment variables (`DATABASE_URL`, `PORT`)
-3. Build command: `npm install && npm run build`
-4. Start command: `npm start`
+> **📖 Detailed Guide:** See [RENDER_DEPLOYMENT_GUIDE.md](./RENDER_DEPLOYMENT_GUIDE.md) for complete step-by-step instructions.
+
+**Quick Setup:**
+1. Connect your GitHub repository to Render
+2. Create a new Web Service
+3. Set environment variables:
+   - `DATABASE_URL` = Your PostgreSQL connection string
+   - `NODE_ENV` = `production`
+4. Build command: `npm install && npm run prisma:generate && npm run build`
+5. Start command (first time): `npx prisma db push && npm start`
+   - After first deployment, change to: `npm start`
+6. Deploy and get your live URL!
+7. **⚠️ Important:** Run `npx prisma db push` via Render Shell if table doesn't exist
 
 **Heroku:**
 1. Create a Heroku app
@@ -426,7 +435,6 @@ CMD ["npm", "start"]
 
 - [GETTING_STARTED.md](./GETTING_STARTED.md) - **Start here!** Complete step-by-step setup guide
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - System architecture and design decisions
-- [POSTMAN_TESTING_GUIDE.md](./POSTMAN_TESTING_GUIDE.md) - Comprehensive testing guide with Postman instructions
 - [CHANGELOG.md](./CHANGELOG.md) - Version history and changes
 
 ## 🎓 Key Implementation Details
